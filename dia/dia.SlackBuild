@@ -42,7 +42,7 @@ fi
 
 set -e
 
-if [ ! -r $PRGNAM-$VERSION.tar.xz ] then
+if [ ! -r $PRGNAM-$VERSION.tar.xz ] ; then
   wget -c http://ftp.gnome.org/pub/gnome/sources/$PRGNAM/0.97/$PRGNAM-$VERSION.tar.xz
 fi
 
