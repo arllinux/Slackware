@@ -8,7 +8,7 @@
 PRGNAM=dia
 VERSION=0.97.2
 BUILD=${BUILD:-3}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_arllinux}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -19,7 +19,7 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/arllinux}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
@@ -38,6 +38,12 @@ else
 fi
 
 set -e
+
+if [ ! -r $PRGNAM-$VERSION.tar.gz ] then
+  wget -c http://ftp.gnome.org/pub/gnome/sources/$PRGNAM/0.97/$PRGNAM-$VERSION.tar.gz
+fi
+
+md5sum -c $PRGNAM-$VERSION.tar.gz.md5
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
