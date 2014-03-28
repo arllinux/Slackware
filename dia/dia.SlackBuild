@@ -4,6 +4,9 @@
 # Written by Matt Hayes (dominian@slackadelic.com
 # Updated for 64bit by Ash Wiren (ash@spooksoftware.com  19-08-2009
 # Currently mantained by Dugan Chen (thedoogster@gmail.com)))
+#
+# Modified by jpantinoux arllinux <sloteur@free.fr>
+
 
 PRGNAM=dia
 VERSION=0.97.2
