@@ -39,11 +39,11 @@ fi
 
 set -e
 
-if [ ! -r $PRGNAM-$VERSION.tar.gz ] then
-  wget -c http://ftp.gnome.org/pub/gnome/sources/$PRGNAM/0.97/$PRGNAM-$VERSION.tar.gz
+if [ ! -r $PRGNAM-$VERSION.tar.xz ] then
+  wget -c http://ftp.gnome.org/pub/gnome/sources/$PRGNAM/0.97/$PRGNAM-$VERSION.tar.xz
 fi
 
-md5sum -c $PRGNAM-$VERSION.tar.gz.md5
+md5sum -c $PRGNAM-$VERSION.tar.xz.md5
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
