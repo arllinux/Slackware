@@ -1,0 +1,26 @@
+
+#
+# Modified by jpantinoux arllinux <sloteur@free.fr>
+
+
+TAG=${TAG:-_arllinux}
+
+CWD=$(pwd)
+TMP=${TMP:-/home/jpantinoux/tmp/arllinux}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/home/jpantinoux/tmp}
+
+
+if [ ! -r $PRGNAM-$VERSION.tar.xz ] ; then
+  wget -c $PRGNAM-$VERSION.tar.xz
+fi
+
+md5sum -c $PRGNAM-$VERSION.tar.xz.md5
+
+
+
+if [ ! -r $PRGNAM-$VERSION.tar.gz ] ; then
+  wget -c $PRGNAM-$VERSION.tar.gz
+fi
+
+md5sum -c $PRGNAM-$VERSION.tar.gz.md5
