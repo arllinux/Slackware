@@ -65,8 +65,8 @@ fi
 
 set -e
 
-if [ ! -r https://download.gnome.org/sources/brasero/3.11/$PRGNAM-$VERSION.tar.xz ] ; then
-  wget -c $PRGNAM-$VERSION.tar.xz
+if [ ! -r $PRGNAM-$VERSION.tar.xz ] ; then
+  wget -c https://download.gnome.org/sources/brasero/3.11/$PRGNAM-$VERSION.tar.xz
 fi
 
 md5sum -c $PRGNAM-$VERSION.tar.xz.md5
