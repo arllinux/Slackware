@@ -21,10 +21,8 @@ Récupérer la liste des modules à intéger au noyau
 ==================================================
 
 # cd /usr/share/mkinird/
-# ./mkinitrd_command_generator.sh > /root/modules
+# ./mkinitrd_command_generator.sh
 
-Le fichier généré contient pour ma machine :
-#
 # mkinitrd_command_generator.sh revision 1.45
 #
 # This script will now make a recommendation about the command to use
@@ -37,7 +35,7 @@ mkinitrd -c -k 3.10.17-smp -f ext4 -r /dev/sda3 -m usb-storage:ums-realtek:ehci-
 
 Il faudra récupérer toutes les informations entre les paramètres -m et -u pour les reporter dans une des lignes du fichier mkinitrd.conf
 
-Inutile le les noter sur un morceau de papier, nous verrons comment les
+Inutile de les noter sur un morceau de papier, nous verrons comment les
 intégrer au bon endroit dans le fichier "mkinitrd.conf"
 
 ==================================
