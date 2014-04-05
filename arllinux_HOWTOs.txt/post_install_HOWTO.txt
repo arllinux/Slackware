@@ -155,4 +155,8 @@ Puis ne pas oublier de rafraichir lilo
 
 # lilo
 
+Ensuite :
+# reboot
+
+#--- &&&& ---
 
