@@ -39,9 +39,9 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/home/jpantinoux/tmp/arllinux}
+TMP=${TMP:-/tmp/arllinux}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/home/jpantinoux/tmp}
+OUTPUT=${OUTPUT:-/tmp}
 
 DOCS="README"
 
@@ -87,4 +87,4 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-txz}
