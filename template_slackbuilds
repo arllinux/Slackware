@@ -6,9 +6,9 @@
 TAG=${TAG:-_arllinux}
 
 CWD=$(pwd)
-TMP=${TMP:-/home/jpantinoux/tmp/arllinux}
+TMP=${TMP:-/tmp/arllinux}
 PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-/home/jpantinoux/tmp}
+OUTPUT=${OUTPUT:-/tmp}
 
 
 if [ ! -r $PRGNAM-$VERSION.tar.xz ] ; then

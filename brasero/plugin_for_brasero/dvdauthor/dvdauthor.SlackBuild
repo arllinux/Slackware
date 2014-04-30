@@ -1,8 +1,9 @@
 #!/bin/sh
 
-# Slackware build script for libgdiplus
+# Slackware build script for dvdauthor
 
-# Copyright 2006  Martin Lefebvre <dadexter@gmail.com>
+# Copyright 2007  Brian Reichert <rignes@pobox.com>
+# Copyright 2010,2013  Niels Horn - Rio de Janeiro, Brazil
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -22,12 +23,14 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Modified by the SlackBuilds.org project
+# Revision date: 2013/03/28
+#
+# Modified by jpantinoux arllinux <sloteur@free.fr>
 
-PRGNAM=libgdiplus
-VERSION=2.10.9
-BUILD=${BUILD:-2}
-TAG=${TAG:-_SBo}
+PRGNAM=dvdauthor
+VERSION=${VERSION:-0.7.1}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_arllinux}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -38,7 +41,7 @@ if [ -z "$ARCH" ]; then
 fi
 
 CWD=$(pwd)
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/arllinux}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
@@ -58,12 +61,20 @@ fi
 
 set -e
 
+if [ ! -r $PRGNAM-$VERSION.tar.xz ] ; then
+    wget -c http://downloads.sourceforge.net/$PRGNAM/$PRGNAM-$VERSION.tar.gz
+  fi
+
+md5sum -c $PRGNAM-$VERSION.tar.gz.md5
+
+
+
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
-cd $PRGNAM-$VERSION
+rm -rf $PRGNAM
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+cd $PRGNAM
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -75,30 +86,26 @@ CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
   --prefix=/usr \
+  --libdir=/usr/lib$LIBDIRSUFFIX \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --disable-static \
   --build=$ARCH-slackware-linux
-
-# Quick fix borrowed from:
-# https://www.slacky.eu/asche64/pkgreports/
-sed -i "s/^LIBS = -lpthread -lfontconfig $/\
-           LIBS = -lpthread -lfontconfig -lglib-2.0 -lX11/" tests/Makefile
 
 make
 make install-strip DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
-  AUTHORS COPYING ChangeLog INSTALL LICENSE MPL-1.1.html NEWS README TODO \
+  AUTHORS ChangeLog COPYING INSTALL NEWS README TODO \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-txz}
