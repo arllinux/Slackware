@@ -85,8 +85,8 @@ UDEV="1"
 MODCONF="0"
 WAIT="1"
 
-Pour enlever tous les signes # au début de chaque lignes, il faut se placer sur le premier #, puis Ctrl + v
-Etendre la sélection vers le bas en appuyant sur la touche j
+Pour enlever tous les signes # au début de chaque lignes, il faut se placer sur le premier # devant la ligne
+SOURCE_TREE, puis Ctrl + v Etendre la sélection vers le bas en appuyant sur la touche j
 Pour supprimer la sélection pressez la touche d
 
 Pour intégrer la liste des modules dans la ligne "MODULE_LIST"
@@ -102,9 +102,9 @@ premier caractère de la liste, puis étendre la sélection aves la touche "l"
 jusqu'à l'avant dernier caractère. En réalisté le curseur clignote sur la
 dernière lettre mais la sélection semble s'arrêter au caractère précédant.
 Puis après avoir appuyer sur la touche "x" pour couper, coller le texte en
-vous plaçant sur la première parenthèse de la ligne MODULE_LIST.
+vous plaçant sur le premier guillement de la ligne MODULE_LIST.
 Coller en appuyant sur "p"
-Supprimer les lignes résiduèles.
+Supprimer les lignes résiduèles au dessous de WAIT=1.
 
 ==============================
 Modifier le fichier lilo.conf
