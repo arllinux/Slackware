@@ -85,7 +85,7 @@ UDEV="1"
 MODCONF="0"
 WAIT="1"
 
-Pour enlever tous les signes # au début de chaque lignes, il faut se placer sur le premier # devant la ligne
+Pour enlever tous les signes "#" au début de chaque lignes, il faut se placer sur le premier "#" devant la ligne
 SOURCE_TREE, puis Ctrl + v Etendre la sélection vers le bas en appuyant sur la touche j
 Pour supprimer la sélection pressez la touche d
 
@@ -101,7 +101,7 @@ Il faut récupérer la liste des modules en utilisant les touches Ctrl +v sur le
 premier caractère de la liste, puis étendre la sélection aves la touche "l"
 jusqu'à l'avant dernier caractère. En réalisté le curseur clignote sur la
 dernière lettre mais la sélection semble s'arrêter au caractère précédant.
-Puis après avoir appuyer sur la touche "x" pour couper, coller le texte en
+Puis après avoir appuyé sur la touche "x" pour couper, coller le texte en
 vous plaçant sur le premier guillement de la ligne MODULE_LIST.
 Coller en appuyant sur "p"
 Supprimer les lignes résiduèles au dessous de WAIT=1.
